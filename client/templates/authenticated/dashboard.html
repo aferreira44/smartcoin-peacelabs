@@ -1,0 +1,42 @@
+<template name="dashboard">
+  <h1>Painel</h1>
+  <div class="row">
+    <h2>Minha Conta</h2>
+    <div class="alert alert-info">
+      <p>
+        <span>Minha Carteira: </span>
+        <span id="myWalletAddress">{{myBalance walletAddress}}</span>
+      </p>
+      <p>
+        <span>Saldo em Carteira: </span>
+        <span id="myBalance" class="text-uppercase">{{myBalance balance}} = {{myBalance btc}} = {{myBalance usd}}</span>
+      </p>
+      <p>
+        <span>Saldo em Projetos: </span>
+        <span id="projectBalanceSum" class="text-uppercase">{{projectBalanceSum balance}} = {{projectBalanceSum btc}} = {{projectBalanceSum usd}}</span>
+      </p>
+    </div>
+  </div>
+
+  <h3>Meus Projetos</h3>
+  <hr />
+
+  {{#each myProjects}}
+    {{> dashboardProjectItem}}
+  {{/each}}
+
+</template>
+
+<template name="dashboardProjectItem">
+  <div class="col-md-4">
+    <div class="col-md-10" style="border: 1px solid #F8F8F8">
+      <img src="{{image}}" class="img-responsive" />
+      <h3>{{name}}</h3>
+      <p>
+        <span>Saldo: </span>
+        <span class="text-uppercase" id="{{walletAddress}}">{{projectBalance walletAddress}}</span>
+      </p>
+      <a id="button" class="btn btn-info" href="{{pathFor 'project' _id=this._id}}">Ver detalhes</a>
+    </div>
+  </div>
+</template>

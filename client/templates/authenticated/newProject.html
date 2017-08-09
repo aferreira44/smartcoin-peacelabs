@@ -1,0 +1,42 @@
+<template name="newProject">
+  <h3>Criar Projeto</h3>
+
+  <div class="col-md-4 col-md-offset-4">
+    <form id="newProject">
+
+      <div class="form-group">
+        <label for="">Nome</label>
+        <input type="text" class="form-control" id="name" placeholder="Nome do Projeto">
+        <p class="help-block">Informe o nome do projeto</p>
+      </div>
+
+      <div class="form-group">
+        <label for="">Descrição</label>
+        <textarea type="text" class="form-control" id="description" placeholder="Descrição do Projeto" rows="10"></textarea>
+        <p class="help-block">Informe uma descrição para o seu projeto</p>
+      </div>
+
+      <div class="form-group">
+        <label for="">Imagem</label>
+        {{> uploader}}
+        <p class="help-block">Faça o upload de uma imagem para o seu projeto</p>
+      </div>
+
+      <div class="form-group">
+        <button id="button" class="btn btn-success">Criar Projeto</button>
+      </div>
+
+    </form>
+  </div>
+</template>
+
+<template name="uploader">
+  <div class="upload-area">
+    <form id="upload">
+      <p class="alert alert-success text-center">
+        <span>Clique aqui ou Arraste um Arquivo para Upload</span>
+        <input id="inputFile" type="file">
+      </p>
+    </form>
+  </div>
+</template>

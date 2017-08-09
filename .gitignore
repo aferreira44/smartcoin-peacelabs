@@ -1,0 +1,5 @@
+.DS_Store
+npm-debug.log
+settings.json
+settings-development.json
+settings-production.json

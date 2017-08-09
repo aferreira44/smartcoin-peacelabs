@@ -1,0 +1,116 @@
+<template name="project">
+  {{#with project}}
+  <div class="alert alert-info">
+    <p>
+      <span>Saldo do Projeto: </span>
+      <span id="{{walletAddress}}" class="text-uppercase">{{projectBalance walletAddress}}</span>
+    </p>
+  </div>
+
+  <div class="jumbotron">
+
+    <img src="{{ image }}" alt="" class="img-responsive" />
+    <h1>{{ name }}</h1>
+    <p>{{ description }}</p>
+
+    <hr />
+
+    <h2>Contribuir</h2>
+
+    <div class="col-md-2">
+      <p class="text-right">Seu Saldo:</p>
+    </div>
+    <div class="col-md-10">
+      <p class="text-left text-uppercase" id="myBalance">{{myBalance balance}} = {{myBalance btc}} = {{myBalance usd}}</p>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="col-md-2">
+      <p class="text-right">Quantidade: </p>
+    </div>
+    <div class="col-md-4">
+      <div class="input-group">
+        <input type="text" class="form-control" id="valueTransaction" />
+        <span class="input-group-addon">ETH</span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <a id="sendEtherProject" class="btn btn-success">
+        <i class="fa fa-paper-plane fa-lg"></i> Enviar
+      </a>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <hr />
+
+    <h2>Atividades</h2>
+
+    {{#with ownerProject}}
+      {{> newActivity}}
+    {{/with}}
+
+    <h3>Atividades do Projeto</h3>
+
+    <table class="table table-hover table-striped table-bordered table-responsive">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Valor</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each projectActivities}}
+          {{> projectActivity}}
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+  <button id="removeProject" class="btn btn-danger">Excluir Projeto</button>
+  {{/with}}
+</template>
+
+<template name="projectActivity">
+  <tr data-name="{{name}}" data-id="{{_id}}">
+    <td>{{name}}</td>
+    <td>{{value}} ETH</td>
+
+    <td>
+      {{{statusVerify _id}}}
+    </td>
+
+  </tr>
+</template>
+
+<template name="newActivity">
+  <h3>Nova Tarefa</h3>
+
+  <div class="col-md-1">
+    <p class="text-right">Nome: </p>
+  </div>
+  <div class="col-md-3">
+    <div class="input-group">
+      <input type="text" size="100" class="form-control" id="inputNameActivity" />
+    </div>
+  </div>
+  <div class="col-md-1">
+    <p class="text-right">Valor: </p>
+  </div>
+  <div class="col-md-3">
+    <div class="input-group">
+      <input type="text" size="100" class="form-control" id="inputValueActivity" />
+    </div>
+  </div>
+  <div class="col-md-4">
+    <a id="btnNewActivity" class="btn btn-success" href="#">
+      <i class="fa fa-plus fa-lg"></i> Add Atividade
+    </a>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <hr />
+</template>
